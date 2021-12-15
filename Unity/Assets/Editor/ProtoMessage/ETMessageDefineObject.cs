@@ -115,6 +115,11 @@ public class ETMessageDefineObject : SerializedScriptableObject
                     default:
                         break;
                 }
+
+                if (!string.IsNullOrEmpty(paramConfig.Comment))
+                {
+                    sb.Append($"\t// {paramConfig.Comment}\n");
+                }
                 sb.Append($"\t{type} {paramConfig.ParamName} = {paramConfig.MemberID};\n");
             }
             sb.Append("}\n\n");
@@ -141,6 +146,7 @@ public class ETMessageDefineObject : SerializedScriptableObject
         MessageClass message = null;
         StringBuilder annotation = new StringBuilder();
         string responseType = "";
+        string comment = "";
         foreach (var item in lines)
         {
             var str = item.Trim();
@@ -259,6 +265,15 @@ public class ETMessageDefineObject : SerializedScriptableObject
                 paramType = Proto3Type.Bytes;
                 if (repeated) paramType = Proto3Type.RepeatedBytes;
             }
+            else if (str.StartsWith("//"))
+            {
+                var split = str.Split(splitChars);
+                for (int i = 1; i < split.Length; i++)
+                {
+                    comment += split[i] + " ";
+                }
+                continue;
+            }
             else
             {
                 if (!str.StartsWith("//") && str.EndsWith(";"))
@@ -285,8 +300,10 @@ public class ETMessageDefineObject : SerializedScriptableObject
                 ParamType = paramType,
                 MessageClassName = messageType,
                 CustomMessageClassName = messageType,
-                MemberID = paramMemberID
+                MemberID = paramMemberID,
+                Comment = comment
             });
+            comment = "";
         }
         return MessageClasses;
     }
@@ -326,42 +343,44 @@ public class MessageClass
 
     [ToggleGroup("Enabled", CollapseOthersOnExpand = true)]
     [LabelText("消息参数列表")]
-    [ListDrawerSettings(Expanded = true, NumberOfItemsPerPage = 10)]
+    //[ListDrawerSettings(Expanded = true, NumberOfItemsPerPage = 10)]
+    [TableList]
     public List<MessageParamConfig> MessageParamConfigs = new List<MessageParamConfig>();
 }
 
 [Serializable]
 public class MessageParamConfig
 {
-    [HorizontalGroup(80)]
+    [VerticalGroup("Name")]
     [HideLabel]
     public string ParamName = "Param1";
-
-    [HorizontalGroup(100)]
+    
+    [VerticalGroup("Type")]
     [HideLabel]
     public Proto3Type ParamType;
     
-    [HorizontalGroup(40)]
-    [LabelText("ID")]
-    [LabelWidth(20)]
+    [VerticalGroup("ID")]
+    [HideLabel]
     public string MemberID;
-
-    [HorizontalGroup(20)]
+    
+    [VerticalGroup("Type")]
     [HideLabel]
     [ShowIf("ShowMessageCustom", true)]
-    //[LabelText("指定")]
     public bool Custom = false;
-
-    [HorizontalGroup()]
+    
+    [VerticalGroup("Type")]
     [HideLabel]
     [ShowIf("Custom", true)]
     public string CustomMessageClassName;
-
-    [HorizontalGroup()]
+    
+    [VerticalGroup("Type")]
     [HideLabel]
     [ShowIf("ShowMessageClassName", true)]
     [ValueDropdown("GetAllMessages", DropdownWidth = 150, NumberOfItemsBeforeEnablingSearch = 10)]
     public string MessageClassName;
+
+    [TextArea]
+    public string Comment;
 
     public bool ShowMessageClassName
     {

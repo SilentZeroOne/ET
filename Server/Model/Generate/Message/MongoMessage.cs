@@ -32,6 +32,7 @@ namespace ET
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
+		// 测试注释-错误
 		[ProtoMember(91)]
 		public int Error { get; set; }
 

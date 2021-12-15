@@ -16,6 +16,7 @@ message ObjectQueryRequest // IActorRequest
 message ObjectQueryResponse // IActorResponse
 {
 	int32 RpcId = 90;
+	// 测试注释-错误
 	int32 Error = 91;
 	string Message = 92;
 	Entity entity = 1;

@@ -82,9 +82,15 @@ namespace ET
                     continue;
                 }
 
-                if (newline.StartsWith("//"))
+                if (newline.StartsWith("///"))
                 {
                     sb.Append($"\t{newline}\n");
+                    continue;
+                }
+                
+                if (newline.StartsWith("//"))
+                {
+                    sb.Append($"\t\t{newline}\n");
                     continue;
                 }
 
