@@ -26,6 +26,7 @@ public class ETMessageDefineObject : SerializedScriptableObject
         var messageDict = new Dictionary<ETProtoFileType, List<MessageClass>>();
         messageDict.Add(ETProtoFileType.InnerMessage, new List<MessageClass>());
         messageDict.Add(ETProtoFileType.OuterMessage, new List<MessageClass>());
+        messageDict.Add(ETProtoFileType.MongoMessage, new List<MessageClass>());
         var arr = AssetDatabase.FindAssets("t:ETMessageDefineObject");
         foreach (var item in arr)
         {
@@ -88,7 +89,7 @@ public class ETMessageDefineObject : SerializedScriptableObject
                         type = "bytes";
                         break;
                     case Proto3Type.Message:
-                        type = paramConfig.MessageClassName;
+                        type = paramConfig.Custom? paramConfig.CustomMessageClassName : paramConfig.MessageClassName;
                         break;
                     case Proto3Type.RepeatedInt32:
                         type = "repeated int32";
@@ -422,4 +423,5 @@ public enum ETProtoFileType
 {
     InnerMessage,
     OuterMessage,
+    MongoMessage
 }
