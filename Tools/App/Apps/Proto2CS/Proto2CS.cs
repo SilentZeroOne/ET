@@ -32,16 +32,16 @@ namespace ET
         public static void Proto2CS()
         {
             msgOpcode.Clear();
-            Proto2CS("ET", "../Proto/InnerMessage.proto", serverMessagePath, "InnerOpcode", 10000);
+            Proto2CS("ET", "../Proto/InnerMessage.proto", serverMessagePath, "InnerOpcode", OpcodeRangeDefine.InnerMinOpcode);
             GenerateOpcode("ET", "InnerOpcode", serverMessagePath);
-            
-            Proto2CS("ET", "../Proto/MongoMessage.proto", serverMessagePath, "MongoOpcode", 40000);
+
+            Proto2CS("ET", "../Proto/MongoMessage.proto", serverMessagePath, "MongoOpcode", OpcodeRangeDefine.MongoMinOpcode);
             GenerateOpcode("ET", "MongoOpcode", serverMessagePath);
 
-            Proto2CS("ET", "../Proto/OuterMessage.proto", serverMessagePath, "OuterOpcode", 20000);
+            Proto2CS("ET", "../Proto/OuterMessage.proto", serverMessagePath, "OuterOpcode", OpcodeRangeDefine.OuterMinOpcode);
             GenerateOpcode("ET", "OuterOpcode", serverMessagePath);
 
-            Proto2CS("ET", "../Proto/OuterMessage.proto", clientMessagePath, "OuterOpcode", 20000);
+            Proto2CS("ET", "../Proto/OuterMessage.proto", clientMessagePath, "OuterOpcode", OpcodeRangeDefine.OuterMinOpcode);
             GenerateOpcode("ET", "OuterOpcode", clientMessagePath);
         }
 
@@ -87,7 +87,7 @@ namespace ET
                     sb.Append($"\t{newline}\n");
                     continue;
                 }
-                
+
                 if (newline.StartsWith("//"))
                 {
                     sb.Append($"\t\t{newline}\n");

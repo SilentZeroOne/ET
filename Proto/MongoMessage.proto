@@ -1,24 +1,22 @@
 syntax = "proto3";
 package ET;
 
-/// <summary>
-/// 测试注释
-/// </summary>
-//ResponseType ObjectQueryResponse
-message ObjectQueryRequest // IActorRequest
-{
-	int32 RpcId = 90;
-	int64 ActorId = 93;
-	int64 Key = 1;
-	int64 InstanceId = 2;
-}
 
 message ObjectQueryResponse // IActorResponse
 {
 	int32 RpcId = 90;
-	// 测试注释-错误
 	int32 Error = 91;
 	string Message = 92;
+
 	Entity entity = 1;
 }
 
+/// <summary>
+/// 传送unit
+/// </summary>
+//ResponseType M2M_TrasferUnitResponse
+message M2M_TrasferUnitRequest // IActorRequest
+{
+	int32 RpcId = 90;
+	Unit Unit = 1;
+}

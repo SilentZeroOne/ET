@@ -3,7 +3,7 @@
 namespace ET
 {
     [ObjectSystem]
-    public class ActorMessageDispatcherComponentAwakeSystem: AwakeSystem<ActorMessageDispatcherComponent>
+    public class ActorMessageDispatcherComponentAwakeSystem : AwakeSystem<ActorMessageDispatcherComponent>
     {
         public override void Awake(ActorMessageDispatcherComponent self)
         {
@@ -13,7 +13,7 @@ namespace ET
     }
 
     [ObjectSystem]
-    public class ActorMessageDispatcherComponentLoadSystem: LoadSystem<ActorMessageDispatcherComponent>
+    public class ActorMessageDispatcherComponentLoadSystem : LoadSystem<ActorMessageDispatcherComponent>
     {
         public override void Load(ActorMessageDispatcherComponent self)
         {
@@ -22,7 +22,7 @@ namespace ET
     }
 
     [ObjectSystem]
-    public class ActorMessageDispatcherComponentDestroySystem: DestroySystem<ActorMessageDispatcherComponent>
+    public class ActorMessageDispatcherComponentDestroySystem : DestroySystem<ActorMessageDispatcherComponent>
     {
         public override void Destroy(ActorMessageDispatcherComponent self)
         {
@@ -45,7 +45,7 @@ namespace ET
         {
             self.ActorMessageHandlers.Clear();
 
-            var types = Game.EventSystem.GetTypes(typeof (ActorMessageHandlerAttribute));
+            var types = Game.EventSystem.GetTypes(typeof(ActorMessageHandlerAttribute));
             foreach (Type type in types)
             {
                 object obj = Activator.CreateInstance(type);
@@ -63,9 +63,11 @@ namespace ET
                 {
                     Type responseType = OpcodeTypeComponent.Instance.GetResponseType(messageType);
                     if (handleResponseType != responseType)
+                    {
                         throw new Exception($"message handler response type error: {messageType.FullName}");
+                    }
                 }
-                
+
                 self.ActorMessageHandlers.Add(messageType, imHandler);
             }
         }
@@ -84,7 +86,7 @@ namespace ET
             await handler.Handle(entity, message, reply);
         }
 
-        public static bool TryGetHandler(this ActorMessageDispatcherComponent self,Type type, out IMActorHandler actorHandler)
+        public static bool TryGetHandler(this ActorMessageDispatcherComponent self, Type type, out IMActorHandler actorHandler)
         {
             return self.ActorMessageHandlers.TryGetValue(type, out actorHandler);
         }
