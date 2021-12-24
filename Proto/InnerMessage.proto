@@ -14,7 +14,6 @@ message M2M_TrasferUnitResponse // IActorResponse
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
-
 	int64 InstanceId = 1;
 }
 
@@ -84,6 +83,7 @@ message ObjectLockRequest // IActorRequest
 	int64 InstanceId = 2;
 	int32 Time = 3;
 }
+
 message ObjectLockResponse // IActorResponse
 {
 	int32 RpcId = 90;
@@ -99,6 +99,7 @@ message ObjectUnLockRequest // IActorRequest
 	int64 OldInstanceId = 2;
 	int64 InstanceId = 3;
 }
+
 message ObjectUnLockResponse // IActorResponse
 {
 	int32 RpcId = 90;
@@ -112,6 +113,7 @@ message ObjectRemoveRequest // IActorRequest
 	int32 RpcId = 90;
 	int64 Key = 1;
 }
+
 message ObjectRemoveResponse // IActorResponse
 {
 	int32 RpcId = 90;
@@ -125,12 +127,12 @@ message ObjectGetRequest // IActorRequest
 	int32 RpcId = 90;
 	int64 Key = 1;
 }
+
 message ObjectGetResponse // IActorResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
-
 	int64 InstanceId = 1;
 }
 
@@ -146,7 +148,6 @@ message G2R_GetLoginKey // IActorResponse
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
-
 	int64 Key = 1;
 	int64 GateId = 2;
 }
@@ -164,10 +165,9 @@ message M2G_CreateUnit // IActorResponse
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
-
-	// 自己的unit id
+	// 自己的unit id 
 	int64 UnitId = 1;
-	// 所有的unit
+	// 所有的unit 
 	repeated UnitInfo Units = 2;
 }
 
@@ -175,3 +175,4 @@ message G2M_SessionDisconnect // IActorLocationMessage
 {
 	int32 RpcId = 90;
 }
+

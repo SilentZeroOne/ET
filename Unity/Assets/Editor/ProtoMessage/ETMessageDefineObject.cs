@@ -265,7 +265,7 @@ public class ETMessageDefineObject : SerializedScriptableObject
                 paramType = Proto3Type.Bytes;
                 if (repeated) paramType = Proto3Type.RepeatedBytes;
             }
-            else if (str.StartsWith("//"))
+            else if (str.StartsWith("//") && !str.StartsWith("///") && !str.StartsWith("//ResponseType"))
             {
                 var split = str.Split(splitChars);
                 for (int i = 1; i < split.Length; i++)

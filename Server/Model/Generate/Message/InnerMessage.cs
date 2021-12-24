@@ -345,11 +345,11 @@ namespace ET
 		[ProtoMember(92)]
 		public string Message { get; set; }
 
-// 自己的unit id
+		// 自己的unit id
 		[ProtoMember(1)]
 		public long UnitId { get; set; }
 
-// 所有的unit
+		// 所有的unit
 		[ProtoMember(2)]
 		public List<UnitInfo> Units = new List<UnitInfo>();
 

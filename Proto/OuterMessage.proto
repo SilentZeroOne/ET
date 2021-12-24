@@ -41,9 +41,9 @@ message G2C_EnterMap // IResponse
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
-	// 自己的unit id
+	// 自己的unit id 
 	int64 UnitId = 1;
-	// 所有的unit
+	// 所有的unit 
 	repeated UnitInfo Units = 2;
 }
 
@@ -67,7 +67,6 @@ message M2C_CreateUnits // IActorMessage
 message C2M_PathfindingResult // IActorLocationMessage
 {
 	int32 RpcId = 90;
-
 	float X = 1;
 	float Y = 2;
 	float Z = 3;
@@ -81,11 +80,9 @@ message C2M_Stop // IActorLocationMessage
 message M2C_PathfindingResult // IActorMessage
 {
 	int64 Id = 1;
-
 	float X = 2;
 	float Y = 3;
 	float Z = 4;
-
 	repeated float Xs = 5;
 	repeated float Ys = 6;
 	repeated float Zs = 7;
@@ -94,12 +91,10 @@ message M2C_PathfindingResult // IActorMessage
 message M2C_Stop // IActorMessage
 {
 	int32 Error = 1;
-
 	int64 Id = 2;
 	float X = 3;
 	float Y = 4;
 	float Z = 5;
-
 	float A = 6;
 	float B = 7;
 	float C = 8;
@@ -117,10 +112,8 @@ message G2C_Ping // IResponse
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
-
 	int64 Time = 1;
 }
-
 
 message G2C_Test // IMessage
 {
@@ -145,8 +138,8 @@ message M2C_Reload // IResponse
 message C2R_Login // IRequest
 {
 	int32 RpcId = 90;
-	string  Account = 1;  // 帐号
-	string  Password = 2;  // 密码
+	string Account = 91;
+	string Password = 92;
 }
 
 message R2C_Login // IResponse
@@ -163,7 +156,7 @@ message R2C_Login // IResponse
 message C2G_LoginGate // IRequest
 {
 	int32 RpcId = 90;
-	int64 Key = 1;  // 帐号
+	int64 Key = 1;
 	int64 GateId = 2;
 }
 
@@ -194,3 +187,4 @@ message M2C_TestRobotCase // IActorLocationResponse
 	string Message = 92;
 	int32 N = 1;
 }
+

@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7c23673ae83844458a8179d4cc7bd06, type: 3}
+  m_Name: MongoMessage
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  FileName: 2
+  MessageClasses:
+  - Enabled: 1
+    MessageType: 6
+    ClassName: ObjectQueryResponse
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Error
+      ParamType: 0
+      MemberID: 91
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Message
+      ParamType: 3
+      MemberID: 92
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: entity
+      ParamType: 5
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: Entity
+      MessageClassName: Entity
+      Comment: 
+  - Enabled: 1
+    MessageType: 5
+    ClassName: M2M_TrasferUnitRequest
+    ResponseType: M2M_TrasferUnitResponse
+    Annotation: "\u4F20\u9001unit123"
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: "RPC\u6CE8\u91CA"
+    - ParamName: Unit
+      ParamType: 5
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: Unit
+      MessageClassName: Unit
+      Comment: 
+  ImportMessagesGroup: 1
