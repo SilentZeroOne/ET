@@ -28,15 +28,7 @@ namespace ET
             Game.Scene.AddComponent<NumericWatcherComponent>();
             
             Game.Scene.AddComponent<NetThreadComponent>();
-
-            Computer computer = Game.Scene.AddChild<Computer>();
-            computer.AddComponent<PCCaseComponent>();
-            computer.AddComponent<MonitorComponent>();
-            computer.AddComponent<KeyboardComponent>();
-            computer.AddComponent<MouseComponent>();
             
-            computer.Start();
-
             switch (Game.Options.AppType)
             {
                 case AppType.Server:
