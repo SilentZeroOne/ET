@@ -11,4 +11,11 @@ namespace MongoDB.Bson.Serialization.Attributes
         {
         }
     }
+
+    public class BsonRepresentationAttribute: Attribute
+    {
+        public BsonRepresentationAttribute(){}
+        
+        public BsonRepresentationAttribute(string s){}
+    }
 }

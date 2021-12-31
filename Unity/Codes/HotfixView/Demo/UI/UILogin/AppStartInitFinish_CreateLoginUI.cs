@@ -19,6 +19,20 @@ namespace ET
 			await TimerComponent.Instance.WaitAsync(3000);
 			
 			computer.Dispose();
+
+			UnitConfig config = UnitConfigCategory.Instance.Get(1001);
+
+			Log.Debug(config.Name + " " + config.Desc);
+
+			var allConfig = UnitConfigCategory.Instance.GetAll();
+			foreach (var cf in allConfig)
+			{
+				Log.Debug("Key "+cf.Key +"Value "+ cf.Value.Name);
+			}
+
+			config = UnitConfigCategory.Instance.GetConfigByHeight(180);
+			
+			Log.Debug(config.Name+" "+config.Height);
 		}
 	}
 }

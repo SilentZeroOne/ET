@@ -208,6 +208,12 @@ namespace ET
                 {
                     continue;
                 }
+
+                if (headInfo.FieldType == "float")
+                {
+                    sb.Append($"\t\t[BsonRepresentation(BsonType.Double, AllowTruncation = true)]\n");
+                }
+                
                 sb.Append($"\t\t[ProtoMember({headInfo.FieldIndex - 2})]\n");
                 sb.Append($"\t\tpublic {headInfo.FieldType} {headInfo.FieldName} {{ get; set; }}\n");
             }

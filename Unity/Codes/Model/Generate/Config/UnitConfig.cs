@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
 using ProtoBuf;
 
 namespace ET
@@ -77,8 +78,9 @@ namespace ET
 		public string Desc { get; set; }
 		[ProtoMember(5)]
 		public int Position { get; set; }
+		[BsonRepresentation(BsonType.Double, AllowTruncation = true)]
 		[ProtoMember(6)]
-		public int Height { get; set; }
+		public float Height { get; set; }
 		[ProtoMember(7)]
 		public int Weight { get; set; }
 
