@@ -27,7 +27,7 @@ namespace ET
 			var allConfig = UnitConfigCategory.Instance.GetAll();
 			foreach (var cf in allConfig)
 			{
-				Log.Debug("Key "+cf.Key +"Value "+ cf.Value.Name);
+				Log.Debug(cf.ToString());
 			}
 
 			config = UnitConfigCategory.Instance.GetConfigByHeight(180);

@@ -77,7 +77,7 @@ namespace ET
 		[ProtoMember(4)]
 		public string Desc { get; set; }
 		[ProtoMember(5)]
-		public int Position { get; set; }
+		public int[] Position { get; set; }
 		[BsonRepresentation(BsonType.Double, AllowTruncation = true)]
 		[ProtoMember(6)]
 		public float Height { get; set; }
