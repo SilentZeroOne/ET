@@ -9,30 +9,31 @@ namespace ET
 			await UIHelper.Create(args.ZoneScene, UIType.UILogin);
 
 			Computer computer = args.ZoneScene.AddChild<Computer>();
-			computer.AddComponent<PCCaseComponent>();
-			computer.AddComponent<KeyboardComponent>();
-			computer.AddComponent<MonitorComponent>();
-			computer.AddComponent<MouseComponent>();
+			await Game.EventSystem.Publish(new EventType.InstallComputer() { Computer = computer });
+			// computer.AddComponent<PCCaseComponent>();
+			// computer.AddComponent<KeyboardComponent>();
+			// computer.AddComponent<MonitorComponent>();
+			// computer.AddComponent<MouseComponent>();
 			args.ZoneScene.AddComponent<OperaComponent>();
 			computer.Start();
 
-			await TimerComponent.Instance.WaitAsync(3000);
-			
+			// await TimerComponent.Instance.WaitAsync(3000);
+			//
 			computer.Dispose();
-
-			UnitConfig config = UnitConfigCategory.Instance.Get(1001);
-
-			Log.Debug(config.Name + " " + config.Desc);
-
-			var allConfig = UnitConfigCategory.Instance.GetAll();
-			foreach (var cf in allConfig)
-			{
-				Log.Debug(cf.ToString());
-			}
-
-			config = UnitConfigCategory.Instance.GetConfigByHeight(180);
-			
-			Log.Debug(config.Name+" "+config.Height);
+			//
+			// UnitConfig config = UnitConfigCategory.Instance.Get(1001);
+			//
+			// Log.Debug(config.Name + " " + config.Desc);
+			//
+			// var allConfig = UnitConfigCategory.Instance.GetAll();
+			// foreach (var cf in allConfig)
+			// {
+			// 	Log.Debug(cf.ToString());
+			// }
+			//
+			// config = UnitConfigCategory.Instance.GetConfigByHeight(180);
+			//
+			// Log.Debug(config.Name+" "+config.Height);
 		}
 	}
 }
