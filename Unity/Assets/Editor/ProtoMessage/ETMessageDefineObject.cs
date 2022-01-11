@@ -334,6 +334,7 @@ public class MessageClass
     public string ClassName = "C2M_Message";
     
     [ToggleGroup("Enabled", CollapseOthersOnExpand = false)]
+    [ShowIf("ShowMessageCustom")]
     [LabelText("返回类型")]
     public string ResponseType = "";
 
@@ -346,6 +347,14 @@ public class MessageClass
     //[ListDrawerSettings(Expanded = true, NumberOfItemsPerPage = 10)]
     [TableList]
     public List<MessageParamConfig> MessageParamConfigs = new List<MessageParamConfig>();
+    
+    public bool ShowMessageCustom
+    {
+        get
+        {
+            return (MessageType == ETMessageType.IRequest || MessageType == ETMessageType.IActorRequest || MessageType == ETMessageType.IActorLocationRequest);
+        }
+    }
 }
 
 [Serializable]
