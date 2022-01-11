@@ -1,5 +1,5 @@
 using System;
-
+using System.Net;
 
 namespace ET
 {
@@ -40,6 +40,32 @@ namespace ET
             {
                 Log.Error(e);
             }
-        } 
+        }
+
+        public static async ETTask LoginTest(Scene zoneScene, string address)
+        {
+            try
+            {
+                Session session = null;
+                R2C_LoginTest r2CLoginTest = null;
+                try
+                {
+                    session = zoneScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(address));
+                    r2CLoginTest = (R2C_LoginTest) await session.Call(new C2R_LoginTest() { Account = "111", Password = "222" });
+                    Log.Debug(r2CLoginTest.Key);
+                    session.Send(new C2R_SayHello() { Hello = "Are you ok" });
+                    await TimerComponent.Instance.WaitAsync(2000);
+                }
+                finally
+                {
+                    session?.Dispose();
+                }
+                
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+            }
+        }
     }
 }
